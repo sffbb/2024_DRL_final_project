@@ -209,7 +209,7 @@ if __name__ == '__main__':
     except:
         print("沒有指定目標跟障礙物點，所以隨機決定")
         env = gym.make('RobotArm-v0')
-    #train(env)
+    train(env)
     #evaluate()
     #execute(env,robots)
     
