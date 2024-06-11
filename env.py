@@ -339,7 +339,7 @@ class RobotArmEnv(gym.Env):
         high_action_space = []
         for i in range(4):
             high_action_space.append(joints[i]+0.1)
-            low_action_space.append(-joints[1]-0.1)
+            low_action_space.append(-joints[i]-0.1)
 
         #joint 5
         low_action_space.append(1.57)
