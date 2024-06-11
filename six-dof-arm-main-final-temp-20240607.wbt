@@ -1,0 +1,443 @@
+#VRML_SIM R2023b utf8
+
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/backgrounds/protos/TexturedBackground.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/backgrounds/protos/TexturedBackgroundLight.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/floors/protos/RectangleArena.proto"
+
+WorldInfo {
+}
+Viewpoint {
+  orientation -0.0896444008879476 -0.01483702545218821 0.9958633159551424 3.4683369394725077
+  position 2.834501461410821 0.7960347132378099 1.0192108503726174
+}
+TexturedBackground {
+}
+TexturedBackgroundLight {
+  castShadows FALSE
+}
+RectangleArena {
+  floorSize 5 5
+}
+DEF target Solid {
+  translation 0.6 0.18 0.25
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0 1 1
+      }
+      geometry Sphere {
+        radius 0.02
+      }
+    }
+  ]
+  name "solid(1)"
+}
+DEF obstacle Solid {
+  translation 0.55 0 0.4
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 1 0 0
+      }
+      geometry Sphere {
+        radius 0.06
+      }
+    }
+  ]
+}
+DEF obstacle2 Solid {
+  translation 0.55 0 1.51
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 1 0 0
+      }
+      geometry Sphere {
+        radius 0.06
+      }
+    }
+  ]
+  name "solid(2)"
+}
+Robot {
+  translation 8.85639947418795e-06 -2.6545008112046904e-06 -0.00036340778374869626
+  rotation 0.9762813697500601 0.19349836543762586 0.09712399112430133 0.0005642968327406707
+  children [
+    Pose {
+      children [
+        DEF Base Shape {
+          appearance PBRAppearance {
+            baseColor 0.9 0.6 0.1
+            roughness 1
+            metalness 0
+          }
+          geometry Box {
+            size 1 1 0.01
+          }
+        }
+      ]
+    }
+    HingeJoint {
+      jointParameters HingeJointParameters {
+        position -0.19241818331176774
+        axis 0 0 1
+        anchor 0 0 1
+        dampingConstant 1
+      }
+      device [
+        RotationalMotor {
+          name "jointonemotor"
+          controlPID 1 0 0
+          maxTorque 1000000
+        }
+        PositionSensor {
+          name "jointoneps"
+        }
+      ]
+      endPoint Solid {
+        translation 0 0 0.07260000000002853
+        rotation 0.010016909501846253 0.00541753213922002 -0.9999351538322635 0.0004326899569737392
+        children [
+          DEF joint2_hj HingeJoint {
+            jointParameters HingeJointParameters {
+              position -0.19214567241869446
+              axis 0 1 0
+              anchor 0 -0.073 0.0726
+            }
+            device [
+              PositionSensor {
+                name "jointtwops"
+              }
+              RotationalMotor {
+                name "jointtwomotor"
+                maxTorque 1000000
+              }
+            ]
+            endPoint Solid {
+              translation 0 -0.14600000000000002 0.0726
+              rotation -0.9999999931271719 -8.293560142652949e-05 -8.286943040344901e-05 1.5699981550211548
+              children [
+                DEF joint3_hj HingeJoint {
+                  jointParameters HingeJointParameters {
+                    position -1.1215789396334957e-06
+                    axis 0 1 0
+                    anchor 0 -0.146 0.0725
+                  }
+                  device [
+                    DEF link3 RotationalMotor {
+                      name "link3motor"
+                      maxTorque 1000000
+                    }
+                    PositionSensor {
+                      name "link3ps"
+                    }
+                  ]
+                  endPoint DEF joint3 Solid {
+                    translation 7.346342054598091e-08 -0.214496 0.007000000000039752
+                    rotation 0.9999999999997563 -4.3520777584348226e-07 5.461213516516195e-07 1.569998608419138
+                    children [
+                      DEF gps5 GPS {
+                        translation 0 0 0.2145
+                        name "gps5"
+                      }
+                      DEF gps6 GPS {
+                        translation 0 0 -0.2145
+                        name "gps6"
+                      }
+                      DEF joint4_hj HingeJoint {
+                        jointParameters HingeJointParameters {
+                          position 1.583505673793767
+                          axis 0 1 0
+                          anchor 0 0.112 0.2145
+                        }
+                        device [
+                          PositionSensor {
+                            name "jointthrps"
+                          }
+                          RotationalMotor {
+                            name "jointthrmotor"
+                            maxTorque 1000000
+                          }
+                        ]
+                        endPoint DEF joint4 Solid {
+                          translation 0.20573338308199648 0.1297 0.21188512225208714
+                          rotation 0 1 0 1.583505673793767
+                          children [
+                            DEF gps4 GPS {
+                              translation 0 0 -0.20575
+                              name "gps4"
+                            }
+                            DEF joint5 HingeJoint {
+                              jointParameters HingeJointParameters {
+                                position -0.013341560231818306
+                                axis 0 1 0
+                                anchor 0 0 0.20575
+                              }
+                              device [
+                                DEF jointfoups PositionSensor {
+                                  name "jointfoups"
+                                }
+                                RotationalMotor {
+                                  name "jointfoumotor"
+                                  maxTorque 1000000
+                                }
+                              ]
+                              endPoint Solid {
+                                translation 0 0 0.20575
+                                rotation -0.9999554668821805 -0.006675896070321686 -0.006670581990991844 1.5700445340961025
+                                children [
+                                  DEF gps3 GPS {
+                                    name "gps3"
+                                  }
+                                  DEF joint6_hj HingeJoint {
+                                    jointParameters HingeJointParameters {
+                                      position -1.5700000000116772
+                                      axis 0 1 0
+                                      anchor 0 0 -0.111983
+                                    }
+                                    device [
+                                      PositionSensor {
+                                        name "jointfivps"
+                                      }
+                                      RotationalMotor {
+                                        name "jointfivmotor"
+                                        maxTorque 1000000
+                                      }
+                                    ]
+                                    endPoint Solid {
+                                      translation -0.005982998102981225 0 -0.11197823557735954
+                                      rotation 0.5775034613392608 -0.5775034613460052 0.5770437628764011 2.0934754614139353
+                                      children [
+                                        DEF gps2 GPS {
+                                          name "gps2"
+                                          accuracy 1
+                                        }
+                                        DEF j7 HingeJoint {
+                                          jointParameters HingeJointParameters {
+                                            position -5.454668035912837e-09
+                                            axis 0 1 0
+                                            anchor 0 -0.03 0.112
+                                          }
+                                          device [
+                                            PositionSensor {
+                                              name "jointsixps"
+                                            }
+                                            RotationalMotor {
+                                              name "jointsixmotor"
+                                              maxTorque 1000000
+                                            }
+                                          ]
+                                          endPoint Solid {
+                                            translation 3.2728008215477054e-11 -0.102575 0.106
+                                            rotation -1 -3.5925647054807954e-09 -3.5897049884269538e-09 1.5699999999999996
+                                            children [
+                                              DEF click Robot {
+                                                translation 0 0 -0.104075
+                                                children [
+                                                  DEF click Solid {
+                                                    translation -0.025 0 -0.015
+                                                    children [
+                                                      DEF clickup Shape {
+                                                        appearance PBRAppearance {
+                                                          baseColor 1 0 1
+                                                          roughness 1
+                                                          metalness 0
+                                                        }
+                                                        geometry Box {
+                                                          size 0.01 0.01 0.03
+                                                        }
+                                                      }
+                                                    ]
+                                                  }
+                                                  DEF click2 Solid {
+                                                    translation 0.025 0 -0.015
+                                                    children [
+                                                      DEF clickup Shape {
+                                                        appearance PBRAppearance {
+                                                          baseColor 1 0 1
+                                                          roughness 1
+                                                          metalness 0
+                                                        }
+                                                        geometry Box {
+                                                          size 0.01 0.01 0.03
+                                                        }
+                                                      }
+                                                    ]
+                                                    name "solid(1)"
+                                                  }
+                                                ]
+                                              }
+                                              DEF click Solid {
+                                                translation 0 0 -0.104075
+                                              }
+                                              DEF gps1 GPS {
+                                                translation 0 0 0.1175
+                                                name "gps1"
+                                                translationStep 0
+                                              }
+                                              DEF pen Solid {
+                                                translation 0 0 -0.117575
+                                                rotation 1 0 0 0
+                                                children [
+                                                  Pen {
+                                                    rotation 1 0 0 0
+                                                    inkColor 1 1 1
+                                                    maxDistance 10
+                                                  }
+                                                ]
+                                                name "pen"
+                                                immersionProperties [
+                                                  ImmersionProperties {
+                                                  }
+                                                ]
+                                              }
+                                              DEF joint7 Shape {
+                                                appearance PBRAppearance {
+                                                  roughness 1
+                                                  metalness 0
+                                                }
+                                                geometry Cylinder {
+                                                  height 0.20515
+                                                  radius 0.0425
+                                                }
+                                              }
+                                              GPS {
+                                                translation 0 0 -0.132575
+                                                translationStep 0
+                                              }
+                                            ]
+                                            boundingObject USE joint7
+                                            physics Physics {
+                                              density 50
+                                            }
+                                          }
+                                        }
+                                        DEF joint6 Shape {
+                                          appearance PBRAppearance {
+                                            roughness 1
+                                            metalness 0
+                                          }
+                                          geometry Cylinder {
+                                            height 0.125
+                                            radius 0.0425
+                                          }
+                                        }
+                                      ]
+                                      name "j6"
+                                      boundingObject USE joint6
+                                      physics Physics {
+                                        density 100
+                                      }
+                                    }
+                                  }
+                                  DEF joint5 Shape {
+                                    appearance PBRAppearance {
+                                      roughness 1
+                                      metalness 0
+                                    }
+                                    geometry Cylinder {
+                                      height 0.125
+                                      radius 0.0425
+                                    }
+                                  }
+                                ]
+                                boundingObject USE joint5
+                                physics Physics {
+                                  density 10
+                                }
+                              }
+                            }
+                            DEF joint4 Shape {
+                              appearance PBRAppearance {
+                                roughness 1
+                                metalness 0
+                              }
+                              geometry Cylinder {
+                                height 0.4115
+                                radius 0.06485
+                              }
+                            }
+                          ]
+                          boundingObject USE joint4
+                          physics Physics {
+                            density 10
+                            centerOfMass [
+                              0 0 0
+                            ]
+                          }
+                        }
+                      }
+                      DEF joint3 Shape {
+                        appearance PBRAppearance {
+                          roughness 1
+                          metalness 0
+                        }
+                        geometry Cylinder {
+                          height 0.429
+                          radius 0.06485
+                        }
+                      }
+                    ]
+                    boundingObject USE joint3
+                    physics Physics {
+                      density 10
+                    }
+                  }
+                }
+                DEF joint2 Shape {
+                  appearance PBRAppearance {
+                    roughness 1
+                    metalness 0
+                  }
+                  geometry Cylinder {
+                    height 0.23
+                    radius 0.056
+                  }
+                }
+              ]
+              name "link2"
+              boundingObject USE joint2
+              physics Physics {
+              }
+            }
+          }
+          DEF axle Shape {
+            appearance PBRAppearance {
+              roughness 1
+              metalness 0
+            }
+            geometry Cylinder {
+              height 0.1452
+              radius 0.07
+            }
+          }
+        ]
+        boundingObject USE axle
+        physics Physics {
+        }
+      }
+    }
+  ]
+  boundingObject USE Base
+  physics Physics {
+  }
+  controller "arm_tutorial"
+  supervisor TRUE
+  window "generic_window"
+}
+Solid {
+  translation 1 0 0
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 1 0.6 0
+        roughness 1
+        metalness 0
+      }
+      geometry Box {
+        size 1 1 0.001
+      }
+    }
+  ]
+  name "floor"
+}
