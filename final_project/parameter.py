@@ -24,8 +24,8 @@ Points = get_point(X_range,Y_range,Z_range) #get target_point , obstacle point
 ENV_Name = 'RobotArm-v0'
 
 #如果有要指定障礙物點跟目標點的話這一段就不要註解
-goal = (600, 180, 250)
-start = (517.69, -122.49, 339.46)
-obstacles_in_main = [(550, 0, 400, 55)]
+# goal = (600, 180, 250)
+# start = (517.69, -122.49, 339.46)
+# obstacles_in_main = [(550, 0, 400, 55)]
 
 #-------------------參數--------------------#
