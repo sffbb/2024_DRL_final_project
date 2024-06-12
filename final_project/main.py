@@ -6,15 +6,7 @@ from env import RobotArmEnv
 import torch
 import matplotlib.pyplot as plt
 
-#-------------------參數--------------------#
-try :
-    from parameter import goal,obstacles_in_main
-except:
-    print("there doesn't exist goal and obstacle")
-# goal = (600, 180, 250)
-# start = (517.69, -122.49, 339.46)
-# obstacles_in_main = [(550, 0, 400, 55)]
-#-------------------參數--------------------#
+
 
 def train(env):
     state_dim = env.observation_space.shape[0]
@@ -141,10 +133,12 @@ def execute(env):
     env.close()  # Close the environment when done
 if __name__ == '__main__':
     try :
+        from parameter import goal,obstacles_in_main
         env = gym.make('RobotArm-v0', target_point=goal, obstacle_point=obstacles_in_main[0])
         print("有指定目標跟障礙物點")
     except:
         print("沒有指定目標跟障礙物點，所以隨機決定")
         env = gym.make('RobotArm-v0')
+   
     train(env)
     execute(env)
